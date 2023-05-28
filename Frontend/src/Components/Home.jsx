@@ -17,7 +17,7 @@ const Form = () => {
   }
   const handleSubmitLogin=async(event)=>{
     event.preventDefault();
-    let res=await fetch("https://cute-red-dibbler-garb.cyclic.app/user/login",{
+    let res=await fetch("https://buy-car.onrender.com/user/login",{
       method:"POST",
       body: JSON.stringify(value),
       headers:{
@@ -39,7 +39,7 @@ const Form = () => {
   }
   const handleSubmitSignup=async(event)=>{
     event.preventDefault();
-    await fetch("https://cute-red-dibbler-garb.cyclic.app/user/register",{
+    await fetch("https://buy-car.onrender.com/user/register",{
       method:"POST",
       body: JSON.stringify(value),
       headers:{

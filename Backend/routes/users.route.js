@@ -6,13 +6,13 @@ const jwt=require("jsonwebtoken");
 const userRouter=express.Router();
 
 userRouter.post("/register",async(req,res)=>{
-    const{name,email,password}=req.body;
+    const{email,password}=req.body;
     try{
         bcrypt.hash(password,5,async(err,hash)=>{
             if(err){
                 console.log(err);
             }else{
-                const user=new UserModel({name,email,password:hash});
+                const user=new UserModel({email,password:hash});
                 await user.save();
                 res.send({"msg":"Registered"})
             }
@@ -31,7 +31,7 @@ userRouter.post("/login",async(req,res)=>{
             bcrypt.compare(password,hash,(err,result)=>{
                 if(result){
                     const token=jwt.sign({id:user[0]._id},"masai");
-                    res.send({"msg":"Logged in","token":token,"email":user[0].email});
+                    res.send({"msg":"Logged in","token":token,"id":user[0]._id});
                 }else{
                     res.send({"msg":"Wrong Credientials"})
                 }

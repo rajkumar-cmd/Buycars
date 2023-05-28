@@ -1,0 +1,20 @@
+.main{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.box{
+    display:flex;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    
+    padding: 2rem;
+    margin: 2rem;
+    flex-direction: column;
+}
+.button{
+    display: flex;
+    justify-content: space-around;
+}
+.subBox{
+    display: flex;
+    justify-content: space-around;
+}

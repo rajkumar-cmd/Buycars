@@ -40,6 +40,47 @@ marketplaceRouter.post("/add", async (req, res) => {
     }
 })
 
+marketplaceRouter.get("/", async (req, res) => {
+    try {
+        const marketplaces = await marketplaceModel.find({})
+        res.send({ marketplaces })
+    } catch (err) {
+        res.send({ "msg": err })
+    }
+})
+
+marketplaceRouter.get("/find/:id", async (req, res) => {
+    const id=req.params.id;
+    try {
+        const post=await marketplaceModel.find({"_id":id})
+        res.send({"POST":post})
+    } catch (err) {
+        res.send({ "msg": err })
+    }
+})
+
+marketplaceRouter.patch("/update/:id", async (req, res) => {
+    const payload=req.body;
+    const id=req.params.id;
+    try {
+        await marketplaceModel.findByIdAndUpdate({"_id":id},payload)
+        res.send("Updated Sucessfully")
+    } catch (err) {
+        res.send({ "msg": err })
+    }
+})
+
+marketplaceRouter.delete("/delete/:id", async (req, res) => {
+    const id=req.params.id;
+    console.log(req.params)
+    try {
+        await marketplaceModel.findByIdAndDelete({"_id":id})
+        res.send("Deleted Sucessfully")
+    } catch (err) {
+        res.send({ "msg": err })
+    }
+})
+
 module.exports = {
     marketplaceRouter
 }

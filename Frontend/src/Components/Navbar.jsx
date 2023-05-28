@@ -1,9 +1,7 @@
-import React from 'react'
 import { NavLink } from 'react-router-dom'
 const links=[
     {path:"/",text:"HOME"},
     {path:"/OEM_Specs",text:"OEM Specs"},
-    {path:"/Dealers",text:"Add Car"},
     {path:"/Marketplace",text:"Marketplace"}
 ]
 
